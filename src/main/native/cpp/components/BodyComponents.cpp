@@ -76,7 +76,14 @@ void BodyComponents::allocate(uint32 nbComponentsToAllocate) {
         // Copy component data from the previous buffer to the new one
         memcpy(newBodiesEntities, mBodiesEntities, mNbComponents * sizeof(Entity));
         memcpy(newBodies, mBodies, mNbComponents * sizeof(Body*));
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
+#endif
         memcpy(newColliders, mColliders, mNbComponents * sizeof(Array<Entity>));
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
         memcpy(newIsActive, mIsActive, mNbComponents * sizeof(bool));
         memcpy(newUserData, mUserData, mNbComponents * sizeof(void*));
         memcpy(newHasSimulationCollider, mHasSimulationCollider, mNbComponents * sizeof(bool));

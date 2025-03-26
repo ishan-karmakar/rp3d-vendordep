@@ -103,7 +103,14 @@ void ColliderComponents::allocate(uint32 nbComponentsToAllocate) {
         memcpy(newCollisionCategoryBits, mCollisionCategoryBits, mNbComponents * sizeof(unsigned short));
         memcpy(newCollideWithMaskBits, mCollideWithMaskBits, mNbComponents * sizeof(unsigned short));
         memcpy(newLocalToWorldTransforms, mLocalToWorldTransforms, mNbComponents * sizeof(Transform));
-        memcpy(newOverlappingPairs, mOverlappingPairs, mNbComponents * sizeof(Array<uint64>));
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
+#endif
+	memcpy(newOverlappingPairs, mOverlappingPairs, mNbComponents * sizeof(Array<uint64>));
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
         memcpy(hasCollisionShapeChangedSize, mHasCollisionShapeChangedSize, mNbComponents * sizeof(bool));
         memcpy(isTrigger, mIsTrigger, mNbComponents * sizeof(bool));
         memcpy(isSimulationCollider, mIsSimulationCollider, mNbComponents * sizeof(bool));

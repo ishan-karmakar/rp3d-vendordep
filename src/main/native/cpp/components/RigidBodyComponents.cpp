@@ -159,8 +159,15 @@ void RigidBodyComponents::allocate(uint32 nbComponentsToAllocate) {
         memcpy(newCentersOfMassWorld, mCentersOfMassWorld, mNbComponents * sizeof(Vector3));
         memcpy(newIsGravityEnabled, mIsGravityEnabled, mNbComponents * sizeof(bool));
         memcpy(newIsAlreadyInIsland, mIsAlreadyInIsland, mNbComponents * sizeof(bool));
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
+#endif
 	memcpy(newJoints, mJoints, mNbComponents * sizeof(Array<Entity>));
         memcpy(newContactPairs, mContactPairs, mNbComponents * sizeof(Array<uint>));
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
         memcpy(newLinearLockAxisFactors, mLinearLockAxisFactors, mNbComponents * sizeof(Vector3));
         memcpy(newAngularLockAxisFactors, mAngularLockAxisFactors, mNbComponents * sizeof(Vector3));
 
