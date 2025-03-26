@@ -103,7 +103,7 @@ void ColliderComponents::allocate(uint32 nbComponentsToAllocate) {
         memcpy(newCollisionCategoryBits, mCollisionCategoryBits, mNbComponents * sizeof(unsigned short));
         memcpy(newCollideWithMaskBits, mCollideWithMaskBits, mNbComponents * sizeof(unsigned short));
         memcpy(newLocalToWorldTransforms, mLocalToWorldTransforms, mNbComponents * sizeof(Transform));
-        memcpy(newOverlappingPairs, mOverlappingPairs, mNbComponents * sizeof(Array<uint64>));
+	    memcpy((void*) newOverlappingPairs, mOverlappingPairs, mNbComponents * sizeof(Array<uint64>));
         memcpy(hasCollisionShapeChangedSize, mHasCollisionShapeChangedSize, mNbComponents * sizeof(bool));
         memcpy(isTrigger, mIsTrigger, mNbComponents * sizeof(bool));
         memcpy(isSimulationCollider, mIsSimulationCollider, mNbComponents * sizeof(bool));

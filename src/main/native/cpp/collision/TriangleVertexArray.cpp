@@ -159,6 +159,11 @@ Vector3 TriangleVertexArray::getVertex(uint32 vertexIndex) const {
     }
     else {
         assert(false);
+#ifdef __GNUC__
+        __builtin_unreachable();
+#else
+        __assume(false);
+#endif
     }
 }
 

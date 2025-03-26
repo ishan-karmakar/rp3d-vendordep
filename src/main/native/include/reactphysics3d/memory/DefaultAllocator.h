@@ -68,7 +68,7 @@ class DefaultAllocator : public MemoryAllocator {
 
                 // Return 16-bytes aligned memory
                 void* address = nullptr;
-                posix_memalign(&address, GLOBAL_ALIGNMENT, size);
+                assert(posix_memalign(&address, GLOBAL_ALIGNMENT, size) == 0);
                 return address;
 #endif
         }

@@ -211,7 +211,7 @@ class QHHalfEdgeStructure {
             bool isValid() {
                bool isValid = true;
 
-               isValid &= approxEqual(normal.lengthSquare(), 1.0, 0.01);
+               isValid &= approxEqual(normal.lengthSquare(), 1.0f, 0.01f);
                isValid &= edge->face == this;
 
                 const QHHalfEdgeStructure::Edge* firstFaceEdge = edge;

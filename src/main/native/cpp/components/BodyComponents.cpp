@@ -76,7 +76,7 @@ void BodyComponents::allocate(uint32 nbComponentsToAllocate) {
         // Copy component data from the previous buffer to the new one
         memcpy(newBodiesEntities, mBodiesEntities, mNbComponents * sizeof(Entity));
         memcpy(newBodies, mBodies, mNbComponents * sizeof(Body*));
-        memcpy(newColliders, mColliders, mNbComponents * sizeof(Array<Entity>));
+        memcpy((void*) newColliders, mColliders, mNbComponents * sizeof(Array<Entity>));
         memcpy(newIsActive, mIsActive, mNbComponents * sizeof(bool));
         memcpy(newUserData, mUserData, mNbComponents * sizeof(void*));
         memcpy(newHasSimulationCollider, mHasSimulationCollider, mNbComponents * sizeof(bool));

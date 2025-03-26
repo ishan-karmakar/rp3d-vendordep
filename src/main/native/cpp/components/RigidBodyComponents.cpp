@@ -159,8 +159,8 @@ void RigidBodyComponents::allocate(uint32 nbComponentsToAllocate) {
         memcpy(newCentersOfMassWorld, mCentersOfMassWorld, mNbComponents * sizeof(Vector3));
         memcpy(newIsGravityEnabled, mIsGravityEnabled, mNbComponents * sizeof(bool));
         memcpy(newIsAlreadyInIsland, mIsAlreadyInIsland, mNbComponents * sizeof(bool));
-	memcpy(newJoints, mJoints, mNbComponents * sizeof(Array<Entity>));
-        memcpy(newContactPairs, mContactPairs, mNbComponents * sizeof(Array<uint>));
+	    memcpy((void*) newJoints, mJoints, mNbComponents * sizeof(Array<Entity>));
+        memcpy((void*) newContactPairs, mContactPairs, mNbComponents * sizeof(Array<uint>));
         memcpy(newLinearLockAxisFactors, mLinearLockAxisFactors, mNbComponents * sizeof(Vector3));
         memcpy(newAngularLockAxisFactors, mAngularLockAxisFactors, mNbComponents * sizeof(Vector3));
 
